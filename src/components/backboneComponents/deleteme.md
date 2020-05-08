@@ -1,0 +1,1 @@
+Please, delete this file when added content in this folder.
