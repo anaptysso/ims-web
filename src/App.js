@@ -1,13 +1,17 @@
 import React from "react";
-import "./App.css";
+import { Provider } from "react-redux";
 
+import "./App.css";
 import Singin from "./components/backboneComponents/account/signin";
+import { store } from "./redux/store";
 
 function App() {
   return (
-    <div className="App">
-      <Singin />
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <Singin />
+      </div>
+    </Provider>
   );
 }
 
