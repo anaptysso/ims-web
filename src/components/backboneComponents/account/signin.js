@@ -1,26 +1,47 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+
+import { SIGNIN_ACTIONS } from "../../../redux/account/signin/signinActions";
+
 const Signin = (props) => {
-  const [username, setUsername] = useState([]);
-  const [password, setPassword] = useState([]);
-  const signin = () => {
-    console.log(username);
-    console.log(password);
-  };
+  useEffect(() => {
+    return (props) => {
+      props.unload();
+    };
+  }, []);
+
   return (
     <div>
-      {" "}
       <span>Username: </span>
       <input
-        value={username}
-        onChange={(event) => setUsername(event.target.value)}
-      />{" "}
+        name="username"
+        type="text"
+        value={props.username}
+        onChange={(event) =>
+          props.signinStateUpdate(event.target.name, event.target.value)
+        }
+      />
       <span>Password: </span>
       <input
-        value={password}
-        onChange={(event) => setPassword(event.target.value)}
-      />{" "}
-      <button onClick={signin}>Sign in</button>{" "}
+        name="password"
+        type="password"
+        value={props.password}
+        onChange={(event) =>
+          props.signinStateUpdate(event.target.name, event.target.value)
+        }
+      />
+      <button onClick={props.signinClick}>Sign in</button>
     </div>
   );
 };
-export default Signin;
+
+const mapStateToProps = (state) => ({ ...state.signin });
+
+const mapDispatchToProps = (dispatch) => ({
+  signinStateUpdate: (key, payload) =>
+    dispatch({ type: SIGNIN_ACTIONS.UPDATE_STATE, key: key, payload: payload }),
+  signinClick: () => dispatch({ type: SIGNIN_ACTIONS.SIGNIN }),
+  unload: () => dispatch({ type: SIGNIN_ACTIONS.UNLOADED }),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signin);
