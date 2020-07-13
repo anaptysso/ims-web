@@ -17,8 +17,7 @@
     "build": "webpack --env=dev --progress --profile --colors",
     "build:dist": "webpack --env=prod --progress --profile --colors",
     "start": "webpack-dev-server --mode development --open --hot",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "jest --coverage"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -37,14 +36,37 @@
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",
-    "@babel/preset-env": "^7.10.2",
-    "@babel/preset-react": "^7.10.1",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
+    "babel-jest": "^26.1.0",
     "babel-loader": "^8.1.0",
     "css-loader": "^3.5.3",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "html-webpack-plugin": "^4.3.0",
+    "jest": "^26.1.0",
+    "react-test-renderer": "^16.13.1",
     "style-loader": "^1.2.1",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0"
+  },
+  "jest": {
+    "modulePaths": [
+      "/shared/vendor/modules"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "bower_components",
+      "shared"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js",
+      "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"
+    }
   }
 }
