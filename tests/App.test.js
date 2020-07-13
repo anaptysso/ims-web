@@ -1,6 +1,6 @@
 import React from "react";
-import App from "./App.jsx";
-import Singin from "./components/backboneComponents/account/signin.jsx";
+import App from "../src/App.jsx";
+import Singin from "../src/components/backboneComponents/account/signin.jsx";
 
 import { configure } from "enzyme";
 import { shallow } from "enzyme";
