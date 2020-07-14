@@ -17,7 +17,7 @@
     "build": "webpack --env=dev --progress --profile --colors",
     "build:dist": "webpack --env=prod --progress --profile --colors",
     "start": "webpack-dev-server --mode development --open --hot",
-    "test": "jest --coverage"
+    "test": "jest"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -54,6 +54,8 @@
     "webpack-dev-server": "^3.11.0"
   },
   "jest": {
+    "collectCoverage": true,
+    "coverageDirectory": "<rootDir>tests/coverage",
     "modulePaths": [
       "/shared/vendor/modules"
     ],
@@ -67,8 +69,8 @@
       "shared"
     ],
     "moduleNameMapper": {
-      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js",
-      "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"
+      "\\.(css|less)$": "<rootDir>tests/__mocks__/styleMock.js",
+      "\\.(gif|ttf|eot|svg)$": "<rootDir>tests/__mocks__/fileMock.js"
     }
   }
 }
