@@ -1,7 +1,7 @@
 import React from "react";
 import { Provider } from "react-redux";
 
-import "./App.css";
+import AppStyles from "./App.less";
 import Singin from "./components/backboneComponents/account/signin.jsx";
 import { store } from "./redux/store";
 
